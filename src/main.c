@@ -212,7 +212,7 @@ int main(void)
             // Run through the connections to keep alive
             for(int i = 0; i < fd_count; i++) {
                 if (pfds[i].fd != udp_listener && pfds[i].fd != tcp_listener) {
-                    send(pfds[i].fd, "\r\n", 2, 0);
+                    send(pfds[i].fd, "", 0, 0);
                 }
             }
         }
