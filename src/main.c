@@ -261,6 +261,9 @@ int main(void)
                         // fprintf(stderr, "Got %d bytes\n", nbytes);
 
                         if (nbytes > 0) {
+                            // Need to write null byte before it gets printed
+                            buf[nbytes] = '\0';
+
                             // We got some good data from udp listener
                             printf("%s", buf);
 
