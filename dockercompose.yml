@@ -1,12 +1,8 @@
 services:
   listener:
     build: .
+    container_name: nmea-repeater
     image: nmea-repeater
     ports:
       - "10110:10110/tcp"
       - "10110:10110/udp"
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "5"

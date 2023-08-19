@@ -74,6 +74,10 @@ int get_listener_socket(int socktype, char *port)
     }
 
     for(p = ai; p != NULL; p = p->ai_next) {
+        printf("Trying to bind to ");
+        print_address(p);
+        printf(":%s/%s\n", port, socktype == SOCK_DGRAM ? "udp" : "tcp");
+
         listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
         if (listener < 0) {
             continue;
@@ -87,9 +91,9 @@ int get_listener_socket(int socktype, char *port)
             continue;
         }
 
-        // printf("Bound to ");
-        // print_address(p);
-        // printf(":%s\n", port);
+        printf("Bound to ");
+        print_address(p);
+        printf(":%s/%s\n", port, socktype == SOCK_DGRAM ? "udp" : "tcp");
 
         break;
     }
